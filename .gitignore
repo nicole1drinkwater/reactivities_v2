@@ -52,3 +52,6 @@ _ReSharper*/
 *.trace
 *.log
 logs/
+
+API/appsettings.json
+API/reactivities.json
