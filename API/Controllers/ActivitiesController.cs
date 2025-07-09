@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Application.Activities.Queries;
-using MediatR;
+using Application.Activities.Commands;
+using Domain;
 
 namespace API.Controllers;
 
@@ -19,4 +20,11 @@ public class ActivitiesController : BaseApiController
         if (activity == null) return NotFound();
         return Ok(activity);
     }
+
+    [HttpPost]
+    public async Task<ActionResult<string>> CreateActivity(Activity activity)
+    {
+        return await Mediator.Send(new CreateActivity.Command { Activity = activity});
+    }
+
 }
