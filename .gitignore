@@ -55,3 +55,5 @@ logs/
 
 API/appsettings.json
 API/reactivities.json
+
+client/ca.cert
