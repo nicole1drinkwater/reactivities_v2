@@ -21,7 +21,7 @@ export default function ActivityDashboard({activities, cancelSelectActivity, sel
                 <ActivityList 
                 activities={activities} 
                 selectActivity={selectActivity}
-
+                deleteActivity={deleteActivity}
                 />
             </Grid2>
             <Grid2 size={5}>
@@ -33,8 +33,9 @@ export default function ActivityDashboard({activities, cancelSelectActivity, sel
                 {editMode && 
                 <ActivityForm 
                     closeForm={closeForm} 
-                    activity={selectedActivity}
-                    submitForm={submitForm} />}
+                    activity={selectedActivity} 
+                    submitForm={submitForm}
+                    />}
             </Grid2>
         </Grid2>
     )
