@@ -1,8 +1,9 @@
-import { Box, Container, CssBaseline } from "@mui/material";
+import { Box, Container, CssBaseline, Typography } from "@mui/material";
 import {useState} from "react";
 import axios from "axios";
 import NavBar from "./NavBar";
 import ActivityDashboard from "../../features/activities/dashboard/ActivityDashboard";
+import { useQuery } from "@tanstack/react-query";
 
 function App() {
   const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined);
@@ -17,7 +18,7 @@ function App() {
   })
 
   const handleSelectActivity = (id: string) => {
-    setSelectedActivity(activities.find(x => x.id === id));
+    setSelectedActivity(activities!.find(x => x.id === id));
   }
 
   const handleCancelSelectActivity = () => {
@@ -57,7 +58,7 @@ function App() {
       <CssBaseline />
       <NavBar openForm={handleOpenForm}/>
       <Container maxWidth='xl' sx={{mt: 3}}>
-        {!activities | isPending ? (
+        {!activities || isPending ? (
           <Typography>Loading...</Typography>
         ) : (
           <ActivityDashboard 
